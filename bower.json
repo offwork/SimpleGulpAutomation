@@ -1,0 +1,21 @@
+{
+  "name": "simple-gulp-automation",
+  "description": "gulp build automation and workflow",
+  "main": "index.js",
+  "authors": [
+    "Kerem Ozdemir"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/offwork/SimpleGulpAutomation",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.4",
+    "angular-ui-router": "^1.0.3"
+  }
+}
