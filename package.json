@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/offwork/SimpleGulpAutomation#readme",
   "devDependencies": {
+    "del": "^2.2.2",
     "gulp": "^3.9.1",
     "run-sequence": "^1.2.2"
   }
