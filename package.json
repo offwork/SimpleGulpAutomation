@@ -29,7 +29,9 @@
     "jshint": "^2.9.4",
     "jshint-stylish": "^2.2.1",
     "run-sequence": "^1.2.2",
-    "wiredep": "^4.0.0",
     "yargs": "^8.0.1"
+  },
+  "dependencies": {
+    "wiredep": "^4.0.0"
   }
 }
