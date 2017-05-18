@@ -2,7 +2,7 @@
  * Created by keremozdemir on 16/05/2017.
  */
 (function () {
-    "use strict";
+    'use strict';
     angular.module('app.core', ['app.main', 'app.dashboard', 'app.profile', 'ui.router'])
         .config(function ($stateProvider, $urlRouterProvider) {
             $urlRouterProvider.otherwise('/dashboard');
@@ -16,9 +16,9 @@
                             controller: 'MainCtrl',
                             controllerAs: 'vm'
                         },
-                        'topbar@main': { templateUrl: 'app/main/partials/topbar.html' },
-                        'aside@main': { templateUrl: 'app/main/partials/aside.html' },
-                        'content@main': { templateUrl: 'app/main/partials/content.html' }
+                        'topbar@main': {templateUrl: 'app/main/partials/topbar.html'},
+                        'aside@main': {templateUrl: 'app/main/partials/aside.html'},
+                        'content@main': {templateUrl: 'app/main/partials/content.html'}
                     }
                 })
                 .state('main.dashboard', {

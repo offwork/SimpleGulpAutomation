@@ -1,32 +1,31 @@
 var gulp = require('gulp'),
-    del = require('del'),
-    runSequence = require('run-sequence');
+    argv = require('yargs').argv,
+    $ = require('gulp-load-plugins')({lazy: true}),
+    config = require('./gulp.config')();
 
-gulp.task('default', function (callback) {
-    runSequence('build', callback);
+gulp.task('vet', function () {
+    log('Analyzing source with JSHint and JSCS');
+    return gulp
+        .src(config.allJs)
+        .pipe($.if(argv.verbose, $.print()))
+        .pipe($.jscs())
+        .pipe($.jshint())
+        .pipe($.jshint.reporter('jshint-stylish', {verbose: true}))
+        .pipe($.jshint.reporter('fail'));
 });
 
-gulp.task('build', function (callback) {
-    runSequence(['clean', 'copy-build'], callback);
-});
+/*************************************************************************************
+* gulp utility log messages
+**************************************************************************************/
 
-gulp.task('clean', function (callback) {
-    del(['./build'], {dryRun: true}, callback);
-});
-
-gulp.task('copy-build', ['copy-assets', 'copy-app-js', 'copy-vendor-js']);
-
-gulp.task('copy-assets', function () {
-    gulp.src('./src/assets/**/*')
-        .pipe(gulp.dest('./build/assets'));
-});
-
-gulp.task('copy-app-js', function () {
-    gulp.src('./src/**/*.js')
-        .pipe(gulp.dest('./build'));
-});
-
-gulp.task('copy-vendor-js', function () {
-    gulp.src('./src/vendor/**/*.js')
-        .pipe(gulp.dest('./build/vendor'));
-});
+function log(messages) {
+    if (typeof (messages) === 'object') {
+        for (var item in messages) {
+            if (messages.hasOwnProperty(item)) {
+                $.util.log($.util.colors.yellow(messages[item]));
+            }
+        }
+    } else {
+        $.util.log($.util.colors.yellow(messages));
+    }
+}
